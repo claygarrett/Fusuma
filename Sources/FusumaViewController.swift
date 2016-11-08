@@ -72,7 +72,7 @@ public enum FusumaModeOrder {
 //@objc public class FusumaViewController: UIViewController, FSCameraViewDelegate, FSAlbumViewDelegate {
 public final class FusumaViewController: UIViewController {
     
-    enum Mode {
+    public enum Mode {
         case camera
         case library
         case video
@@ -80,7 +80,7 @@ public final class FusumaViewController: UIViewController {
 
     public var hasVideo = false
 
-    var mode: Mode = .camera
+    public var mode: Mode = .camera
     public var modeOrder: FusumaModeOrder = .libraryFirst
     var willFilter = true
 
@@ -194,7 +194,7 @@ public final class FusumaViewController: UIViewController {
         libraryButton.clipsToBounds = true
         videoButton.clipsToBounds = true
 
-        changeMode(Mode.library)
+        changeMode(self.mode)
         
         photoLibraryViewerContainer.addSubview(albumView)
         cameraShotContainer.addSubview(cameraView)
@@ -386,10 +386,6 @@ private extension FusumaViewController {
     
     func changeMode(_ mode: Mode) {
 
-        if self.mode == mode {
-            return
-        }
-        
         //operate this switch before changing mode to stop cameras
         switch self.mode {
         case .library:

@@ -33,7 +33,7 @@ class ViewController: UIViewController, FusumaDelegate {
         let fusuma = FusumaViewController()
         
         //        fusumaCropImage = false
-        
+        fusuma.mode = .camera
         fusuma.delegate = self
         self.present(fusuma, animated: true, completion: nil)
     }
